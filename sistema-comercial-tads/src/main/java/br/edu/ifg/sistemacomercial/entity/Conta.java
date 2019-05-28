@@ -11,8 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,10 +20,6 @@ public class Conta implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    
-    @OneToMany
-    @JoinColumn(name = "conta_id")
-    private FluxoCaixa fluxoCaixa;
 
     @Override
     public int hashCode() {
@@ -68,13 +62,4 @@ public class Conta implements Serializable{
         this.nome = nome;
     }
 
-    public FluxoCaixa getFluxoCaixa() {
-        return fluxoCaixa;
-    }
-
-    public void setFluxoCaixa(FluxoCaixa fluxoCaixa) {
-        this.fluxoCaixa = fluxoCaixa;
-    }
-    
-    
 }

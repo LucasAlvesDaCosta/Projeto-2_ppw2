@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +17,7 @@ public class Produto implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private PedidoProdutoPK id;
     private String nome;
     private String marca;
     @Column(name = "codigo_barras")
@@ -29,18 +28,15 @@ public class Produto implements Serializable{
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
-    
-    @OneToMany
-    @JoinColumn(name = "produto_id")
-    private MovimentoEstoque movimentoEstoque;
-    
-    public Integer getId() {
+
+    public PedidoProdutoPK getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(PedidoProdutoPK id) {
         this.id = id;
     }
+          
 
     public String getNome() {
         return nome;
@@ -80,14 +76,6 @@ public class Produto implements Serializable{
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
-    }
-
-    public MovimentoEstoque getMovimentoEstoque() {
-        return movimentoEstoque;
-    }
-
-    public void setMovimentoEstoque(MovimentoEstoque movimentoEstoque) {
-        this.movimentoEstoque = movimentoEstoque;
     }        
 
     @Override

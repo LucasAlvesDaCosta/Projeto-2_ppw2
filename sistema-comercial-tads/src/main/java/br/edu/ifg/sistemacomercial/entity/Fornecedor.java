@@ -11,8 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,11 +28,7 @@ public class Fornecedor implements Serializable{
     private String telefone1;
     private String telefone2;    
     private String email;
-    private String website;
-
-    @OneToMany
-    @JoinColumn(name = "fornecedor_id")
-    private MovimentoEstoque movimentoEstoque;      
+    private String website;   
     
     @Override
     public int hashCode() {
@@ -139,14 +133,6 @@ public class Fornecedor implements Serializable{
 
     public void setWebsite(String website) {
         this.website = website;
-    }
-
-    public MovimentoEstoque getMovimentoEstoque() {
-        return movimentoEstoque;
-    }
-
-    public void setMovimentoEstoque(MovimentoEstoque movimentoEstoque) {
-        this.movimentoEstoque = movimentoEstoque;
     }
            
 }

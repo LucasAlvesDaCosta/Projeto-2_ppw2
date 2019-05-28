@@ -7,7 +7,6 @@ package br.edu.ifg.sistemacomercial.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -16,9 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,30 +43,15 @@ public class Pedido implements Serializable{
     @Column(name = "usuario_id")
     private Integer usuarioID;
     private float desconto;
-@ManyToMany
-    @JoinTable(name = "pedido_has_produto", 
-            joinColumns = @JoinColumn(name="produto_id"),
-            inverseJoinColumns = @JoinColumn(name="pedido_id"))
-    private List<Produto> produtos;
-
-@OneToMany
- @JoinColumn(name = "pedido_id")
-  private FluxoCaixa fluxoCaixa;
-
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
     
-  public String getProdutosString(){
-        StringBuilder builder = new StringBuilder();
-        for (Produto produto : produtos) {
-            builder.append(produto.getNome()).append(",");
-        }
-        return builder.toString();
-    }
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
+@ManyToOne
+@JoinColumn(name = "cliente_id")
+private Cliente cliente;
+
+@ManyToOne
+ @JoinColumn(name = "usuario_id")
+  private Usuario usuario;
+    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -151,12 +133,20 @@ public class Pedido implements Serializable{
         this.desconto = desconto;
     }
 
-    public FluxoCaixa getFluxoCaixa() {
-        return fluxoCaixa;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setFluxoCaixa(FluxoCaixa fluxoCaixa) {
-        this.fluxoCaixa = fluxoCaixa;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     
     

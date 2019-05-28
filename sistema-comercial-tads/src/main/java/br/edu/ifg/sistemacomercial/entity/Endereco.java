@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,6 +35,10 @@ public class Endereco implements Serializable{
     private Integer clienteId;
     
     private boolean cobranca;
+    
+@ManyToOne
+@JoinColumn(name = "cliente_id")
+private Cliente cliente;
 
     @Override
     public int hashCode() {
@@ -138,4 +144,14 @@ public class Endereco implements Serializable{
     public void setCobranca(boolean cobranca) {
         this.cobranca = cobranca;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
+    
 }

@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -34,7 +36,16 @@ public class MovimentoEstoque implements Serializable{
  @Column(name = "preco_custo")
     private float precoCusto;
     private String observacao;
+    
+@ManyToOne
+@JoinColumn(name = "produto_id")
+private Produto produto;
 
+@ManyToOne
+@JoinColumn(name = "fornecedor_id")
+private Fornecedor fornecedor;
+
+    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -115,4 +126,21 @@ public class MovimentoEstoque implements Serializable{
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
+
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+    
 }

@@ -41,12 +41,6 @@ public class Usuario implements Serializable{
             inverseJoinColumns = @JoinColumn(name="permissao_id"))    
     private List<Permissao> permissoes;    
     
-    @OneToMany
-    @JoinColumn(name = "usuario_id")
-    private Pedido pedidos;
-    
-    
-
     public Long getId() {
         return id;
     }
@@ -109,16 +103,7 @@ public class Usuario implements Serializable{
             builder.append(permissao.getNome()).append(",");
         }
         return builder.toString();
-    }
-
-    public Pedido getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(Pedido pedidos) {
-        this.pedidos = pedidos;
-    }
-    
+    }    
     
     @Override
     public int hashCode() {

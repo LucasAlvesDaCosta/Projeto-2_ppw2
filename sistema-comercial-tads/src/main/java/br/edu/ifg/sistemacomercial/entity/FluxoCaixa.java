@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,7 +41,15 @@ public class FluxoCaixa implements Serializable{
  
  @Column(name = "conta_id")
     private Integer contaId;
+ 
+@ManyToOne
+@JoinColumn(name = "pedido_id")
+private Pedido pedido;
 
+@ManyToOne
+@JoinColumn(name = "conta_id")
+private Conta conta;
+        
     @Override
     public int hashCode() {
         int hash = 7;
@@ -120,5 +130,21 @@ public class FluxoCaixa implements Serializable{
     public void setContaId(Integer contaId) {
         this.contaId = contaId;
     }
-    
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }    
+
+    public Conta getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
+    }
+        
 }

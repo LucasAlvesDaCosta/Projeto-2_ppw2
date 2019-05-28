@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,15 +31,7 @@ public class Cliente implements Serializable{
     private String telefone2;
     private String telefone3;
     private String email;
-    private String observacao;
-    
-    @OneToMany
-    @JoinColumn(name = "cliente_id")
-    private Pedido pedidos;
-    
-   @OneToMany
-    @JoinColumn(name = "cliente_id")
-   private Endereco endereco;
+    private String observacao;        
    
     @Override
     public int hashCode() {
@@ -164,22 +154,4 @@ public class Cliente implements Serializable{
         this.observacao = observacao;
     }
 
-    public Pedido getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(Pedido pedidos) {
-        this.pedidos = pedidos;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-    
-    
-   
 }
