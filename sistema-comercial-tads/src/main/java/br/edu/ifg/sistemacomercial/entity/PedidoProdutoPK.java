@@ -2,6 +2,7 @@
 package br.edu.ifg.sistemacomercial.entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
@@ -14,10 +15,7 @@ public class PedidoProdutoPK implements Serializable{
     private Integer pedidoId;
    
    @Column(name = "produto_id")
-    private Integer produtoId;
-   
-    private float valor;
-    private float quantidade;
+    private Integer produtoId;   
 
    @ManyToOne
    @JoinColumn(name = "pedido_id")
@@ -26,11 +24,36 @@ public class PedidoProdutoPK implements Serializable{
    @ManyToOne
    @JoinColumn(name = "produto_id")
    private Produto produto;
-   
+
     @Override
-    public String toString() {
-        return "("+ getValor()+ ") " + getQuantidade();
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.pedidoId);
+        hash = 79 * hash + Objects.hashCode(this.produtoId);
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PedidoProdutoPK other = (PedidoProdutoPK) obj;
+        if (!Objects.equals(this.pedidoId, other.pedidoId)) {
+            return false;
+        }
+        if (!Objects.equals(this.produtoId, other.produtoId)) {
+            return false;
+        }
+        return true;
+    }
+   
 
     public Integer getPedidoId() {
         return pedidoId;
@@ -46,25 +69,8 @@ public class PedidoProdutoPK implements Serializable{
 
     public void setProdutoId(Integer produtoId) {
         this.produtoId = produtoId;
-    }
-
-    
-    public float getValor() {
-        return valor;
-    }
-
-    public void setValor(float valor) {
-        this.valor = valor;
-    }
-
-    public float getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(float quantidade) {
-        this.quantidade = quantidade;
-    }
-
+    }    
+   
     public Pedido getPedido() {
         return pedido;
     }

@@ -21,6 +21,7 @@ br/edu/ifg/sistemacomercial/entity/Pedido.class
 br/edu/ifg/sistemacomercial/dao/ProdutoDAO.class
 br/edu/ifg/sistemacomercial/bean/ProdutoBean.class
 br/edu/ifg/sistemacomercial/entity/Cliente.class
+br/edu/ifg/sistemacomercial/entity/PedidoHasProduto.class
 br/edu/ifg/sistemacomercial/entity/Produto.class
 br/edu/ifg/sistemacomercial/logic/CategoriaLogic.class
 br/edu/ifg/sistemacomercial/dao/CategoriaDAO.class

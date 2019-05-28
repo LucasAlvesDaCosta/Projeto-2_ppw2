@@ -17,7 +17,7 @@ public class Produto implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private PedidoProdutoPK id;
+    private Integer id;
     private String nome;
     private String marca;
     @Column(name = "codigo_barras")
@@ -29,11 +29,11 @@ public class Produto implements Serializable{
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    public PedidoProdutoPK getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(PedidoProdutoPK id) {
+    public void setId(Integer id) {
         this.id = id;
     }
           

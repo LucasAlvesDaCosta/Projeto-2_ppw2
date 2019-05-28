@@ -27,7 +27,7 @@ public class Pedido implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)    
     @EmbeddedId
-    private PedidoProdutoPK id;
+    private Integer id;
     
     @Column(name = "cliente_id")
     private Integer clienteID;
@@ -77,11 +77,11 @@ private Cliente cliente;
         return true;
     }
 
-    public PedidoProdutoPK getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(PedidoProdutoPK id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
